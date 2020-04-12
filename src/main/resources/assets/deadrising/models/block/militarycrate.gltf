@@ -1,0 +1,106 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 32472,
+      "type": "VEC3",
+      "max": [
+        1.0260000228881836,
+        1.7451390027999878,
+        2.0710530281066895
+      ],
+      "min": [
+        -1.0260000228881836,
+        0.00419300002977252,
+        -2.0710530281066895
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 32472,
+      "type": "VEC2",
+      "max": [
+        0.9921879768371582,
+        0.9918699860572815
+      ],
+      "min": [
+        0.0078119998797774315,
+        0.0078119998797774315
+      ]
+    }
+  ],
+  "asset": {
+    "generator": "Cout970\u0027s Modeler glTF v2 Exporter",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "militarycrate.bin",
+      "byteLength": 649440
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 389664,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 389664,
+      "byteLength": 259776,
+      "target": 34962
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "TEXCOORD_0": 1
+          },
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "translation": [
+        0.0,
+        0.0,
+        0.375
+      ],
+      "name": "Military_Container_Меш.003"
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "root"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        1
+      ]
+    }
+  ]
+}

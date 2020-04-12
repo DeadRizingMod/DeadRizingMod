@@ -1,0 +1,25 @@
+{
+  "asset": {
+    "generator": "Cout970\u0027s Modeler glTF v2 Exporter",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "testmodel.bin",
+      "byteLength": 0
+    }
+  ],
+  "nodes": [
+    {
+      "name": "root"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

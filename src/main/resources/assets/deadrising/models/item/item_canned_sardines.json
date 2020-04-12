@@ -1,0 +1,45 @@
+{
+	"credit": " Made by SwiftyNifty23 In block bench",
+	"textures": {
+		"1": "deadrising:items/food/canned_sardines",
+		"particle": "cfm:blocks/food/canned_sardines"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 7],
+			"to": [9, 1, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 8, 15]},
+			"faces": {
+				"north": {"uv": [0, 13, 7, 16], "texture": "#1"},
+				"east": {"uv": [0, 13, 7, 16], "texture": "#1"},
+				"south": {"uv": [0, 13, 7, 16], "texture": "#1"},
+				"west": {"uv": [0, 13, 7, 16], "texture": "#1"},
+				"up": {"uv": [0, 6, 7, 13], "texture": "#1"},
+				"down": {"uv": [0, 6, 7, 13], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [101, 0, 0],
+			"translation": [0.5, 2.25, 9]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [106, 0, 0],
+			"translation": [0, 1.25, 9.25]
+		},
+		"firstperson_righthand": {
+			"rotation": [75, 0, 0],
+			"translation": [-2.25, 9.25, 10]
+		},
+		"firstperson_lefthand": {
+			"rotation": [86, 0, 0],
+			"translation": [0, 5, 8.75]
+		},
+		"gui": {
+			"rotation": [92, 0, 0],
+			"translation": [1.25, 4.25, 0],
+			"scale": [3.01, 1.47, 3.14]
+		}
+	}
+}

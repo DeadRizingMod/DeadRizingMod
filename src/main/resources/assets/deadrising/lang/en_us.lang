@@ -1,0 +1,87 @@
+﻿itemGroup.tabmedical=DeadRizing - Medical
+itemGroup.tabmelee=DeadRizing - Melee Weapons
+itemGroup.tabfood=DeadRizing - Foods
+itemGroup.tabblocks=DeadRizing - Props
+itemGroup.modularwarfareTab=DeadRizing - Guns
+itemGroup.armorstab=DeadRizing - Armors
+
+
+#Health Items
+item.medkit.name=Medkit
+item.first_aid_kit.name=First Aid Kit
+item.bandage.name=Bandage
+item.bandaid.name=Band-Aid
+item.painkillers.name=Painkillers
+
+
+#Entitys
+
+entity.zombie.name=DeadRizing Zombie
+entity.crawler.name=DeadRizing Zombie Crawler
+
+
+
+#Melee Weapons
+item.bowie.name=Bowie Knife
+item.combat_knife.name=Combat Knife
+item.KATANA.name=Katana
+item.cleaver.name=Cleaver
+item.wrench.name=Wrench
+
+#Props
+tile.ruble.name=Ruble
+tile.sandbag_block.name=Sand Bag
+tile.campfire.name=Campfire
+tile.cabnet.name=Cabnet
+tile.chair.name=Chair
+tile.floorprop.name=floorprop
+tile.floorprop2.name=floorprop2
+tile.pallet.name=Pallet
+tile.ruble2.name=Ruble2
+tile.trash.name=Trash
+tile.box.name=Empty Box
+tile.box_peaches.name=Box of Peaches
+tile.box_plums.name=Box of Plums
+tile.box_grapes.name=Box of grapes
+tile.box_tangerines.name=Box of tangerines
+tile.crate.name=Crate
+tile.crate_open.name=Crate Open
+tile.military_crate.name=Military Crate
+tile.repairstation.name=Repairstaion
+tile.firepit.name=Fire Pit
+tile.blacksmith.name=Black Smith
+
+
+
+#Food Items
+item.item_beans=Canned Beans
+item.item_fish.name=Canned Fish
+item.item_fruit.name=Canned Fruit
+item.item_pasta.name=Canned Pasta
+item.item_pickles.name=Canned Pickles
+item.item_soup.name=Canned Soup
+item.item_spag.name=Canned Spag
+item.item_canned_spaghetti.name=Canned Spaghetti
+item.item_canned_sardines.name=Canned Sardines
+item.item_canned_tuna.name=Canned Tuna
+item.item_sardines.name=Canned Spag
+
+
+#Menu/Gui Elements
+gui.button.discord=DISCORD
+gui.button.website=WEBSITE
+gui.button.play=PLAY
+gui.button.singleplayer=SINGLEPLAYER
+gui.button.multiplayer=OFFICIAL SERVERS
+gui.button.settings=SETTINGS
+gui.button.quit=QUIT
+gui.button.news=NEWS
+gui.button.stats=STATISTICS
+gui.button.kangaroo=COMMUNITY SERVERS
+gui.button.stats=PLAYER STATS
+
+#Menu Titles
+gui.title.mainmenu=Main Menu
+
+#Menu Subtitles
+gui.subtitle.status=DeadRizing

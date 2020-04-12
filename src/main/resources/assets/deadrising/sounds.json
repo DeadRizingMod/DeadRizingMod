@@ -1,0 +1,50 @@
+{
+    "entity.zombie.idle1":
+    {
+        "category": "entity",
+        "subtitle": "Zombie Growl",
+        "sounds": [{ "name": "deadrising:entity/drzombie/drzom_idle_1", "stream": false}]
+    },
+    
+    "entity.zombie.idle2":
+    {
+        "category": "entity",
+        "subtitle": "Zombie Growl",
+        "sounds": [{ "name": "deadrising:entity/drzombie/drzom_idle_2", "stream": false}]
+    },
+    
+    "entity.zombie.idle3":
+    {
+        "category": "entity",
+        "subtitle": "Zombie Growl",
+        "sounds": [{ "name": "deadrising:entity/drzombie/drzom_idle_3", "stream": false}]
+    },
+    
+    "entity.zombie.idle4":
+    {
+        "category": "entity",
+        "subtitle": "Zombie Growl",
+        "sounds": [{ "name": "deadrising:entity/drzombie/drzom_idle_4", "stream": false}]
+    },
+    
+    "entity.zombie.hurt1":
+    {
+        "category": "entity",
+        "subtitle": "Zombie Screech",
+        "sounds": [{ "name": "deadrising:entity/drzombie/drzom_hurt_1", "stream": false}]
+    },
+    
+    "entity.zombie.hurt2":
+    {
+        "category": "entity",
+        "subtitle": "Zombie Screech",
+        "sounds": [{ "name": "deadrising:entity/drzombie/drzom_hurt_2", "stream": false}]
+    },
+    
+    "entity.zombie.hurt3":
+    {
+        "category": "entity",
+        "subtitle": "Zombie Screech",
+        "sounds": [{ "name": "deadrising:entity/drzombie/drzom_hurt_3", "stream": false}]
+    }
+}
