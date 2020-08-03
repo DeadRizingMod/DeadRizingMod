@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "facing=north,open=false": {"model": "deadrising:big_crate_closed", "y": 180},
+        "facing=east,open=false": {"model": "deadrising:big_crate_closed", "y": 270},
+        "facing=south,open=false": {"model": "deadrising:big_crate_closed", "y": 0},
+        "facing=west,open=false": {"model": "deadrising:big_crate_closed", "y": 90},
+        "facing=north,open=true": {"model": "deadrising:big_crate_ammo", "y": 180},
+        "facing=east,open=true": {"model": "deadrising:big_crate_ammo", "y": 270},
+        "facing=south,open=true": {"model": "deadrising:big_crate_ammo", "y": 0},
+        "facing=west,open=true": {"model": "deadrising:big_crate_ammo", "y": 90}
+    }
+}

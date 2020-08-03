@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class FoodBase extends ItemFood implements IHasModel
 {
-	
+    private String[] description;
 
 	public FoodBase(String name, int amount, float saturation, boolean isAnimalFood, int StackSize, CreativeTabs tab)
 	{
@@ -29,7 +29,10 @@ public class FoodBase extends ItemFood implements IHasModel
 
 	}
 
-	
+    public FoodBase addAditionalDescription(String... description) {
+        this.description = description;
+        return this;
+    }
 
 	@Override
 	public void registerModels() 

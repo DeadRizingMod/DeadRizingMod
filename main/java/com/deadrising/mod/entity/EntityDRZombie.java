@@ -17,6 +17,7 @@ import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -24,6 +25,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
@@ -41,9 +43,9 @@ public class EntityDRZombie extends EntityZombie
 	protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(25.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15D);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
         
     }
@@ -58,7 +60,7 @@ public class EntityDRZombie extends EntityZombie
 		Random rand = new Random();
 		int infectChance = rand.nextInt(100);
 		
-		if(infectChance > 70)
+		if(infectChance > 90)
 		{
 			if(entityIn instanceof EntityLivingBase)
 			{
@@ -70,6 +72,22 @@ public class EntityDRZombie extends EntityZombie
 	
 	@Override
 	protected boolean shouldBurnInDay() {
+		return false;
+	}
+	
+	@Override
+ 	public AxisAlignedBB getCollisionBoundingBox() {
+		// TODO Auto-generated method stub
+		return super.getCollisionBoundingBox();
+	}
+	
+	@Override
+	protected boolean canEquipItem(ItemStack stack) {
+		return false;
+	}
+	
+	@Override
+	protected boolean canDropLoot() {
 		return false;
 	}
 	

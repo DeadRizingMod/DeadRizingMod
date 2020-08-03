@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=up": {"model": "deadrising:concretebarrier", "x": 180},
+        "facing=down": {"model": "deadrising:concretebarrier", "x": 0},
+        "facing=north": {"model": "deadrising:concretebarrier", "x": 90, "y": 180},
+        "facing=east": {"model": "deadrising:concretebarrier", "x": 90, "y": 270},
+        "facing=south": {"model": "deadrising:concretebarrier", "x": 90},
+        "facing=west": {"model": "deadrising:concretebarrier", "x": 90, "y": 90}
+    }
+}

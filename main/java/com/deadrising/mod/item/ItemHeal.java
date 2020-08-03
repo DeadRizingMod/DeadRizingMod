@@ -66,6 +66,7 @@ public class ItemHeal extends Item implements IHasModel{
 		return stack;
 	}
 
+	
 	protected void onUse(ItemStack stack, World world, EntityPlayer player) {
 	}
 

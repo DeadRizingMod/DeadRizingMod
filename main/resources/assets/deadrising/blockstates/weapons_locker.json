@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=up": {"model": "deadrising:weapons_locker", "x": 180},
+        "facing=down": {"model": "deadrising:weapons_locker", "x": 0},
+        "facing=north": {"model": "deadrising:weapons_locker", "x": 90, "y": 180},
+        "facing=east": {"model": "deadrising:weapons_locker", "x": 90, "y": 270},
+        "facing=south": {"model": "deadrising:weapons_locker", "x": 90},
+        "facing=west": {"model": "deadrising:weapons_locker", "x": 90, "y": 90}
+    }
+}

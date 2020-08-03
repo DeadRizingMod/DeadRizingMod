@@ -43,8 +43,8 @@ public class EntityCrawler extends EntityZombie
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15D);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(0.0D);
         
     }
 	
@@ -58,7 +58,7 @@ public class EntityCrawler extends EntityZombie
 		Random rand = new Random();
 		int infectChance = rand.nextInt(100);
 		
-		if(infectChance > 70)
+		if(infectChance > 90)
 		{
 			if(entityIn instanceof EntityLivingBase)
 			{

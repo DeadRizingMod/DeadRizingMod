@@ -9,6 +9,7 @@ import com.deadrising.mod.init.ModItems;
 import com.deadrising.mod.utils.IHasModel;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -24,6 +25,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Rotations;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -70,6 +72,7 @@ public class CampfireBlock extends Block implements IHasModel
         return true;
     }
     
+ 
     
     
     public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {

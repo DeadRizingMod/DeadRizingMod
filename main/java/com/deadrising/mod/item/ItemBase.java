@@ -22,15 +22,24 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemBase extends Item implements IHasModel
 {
-	public ItemBase(String name, int StackSize, CreativeTabs tab) 
+	
+    private String[] description;
+    
+	public ItemBase(String name) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(tab);
-		setMaxStackSize(StackSize);
+		setCreativeTab(deadrising.TabItems);
+		setMaxStackSize(1);
 		
 		ModItems.ITEMS.add(this);
 	}
+	
+	
+    public ItemBase addAditionalDescription(String... description) {
+        this.description = description;
+        return this;
+    }
 	
 	@Override
 	public void registerModels() 

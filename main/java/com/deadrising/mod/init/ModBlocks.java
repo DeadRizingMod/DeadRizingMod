@@ -8,9 +8,14 @@ import com.deadrising.mod.blocks.PropBase;
 import com.deadrising.mod.blocks.props.CabnetBlock;
 import com.deadrising.mod.blocks.props.CampfireBlock;
 import com.deadrising.mod.blocks.props.ChairBlock;
+import com.deadrising.mod.blocks.props.ConcreteBarrier;
+import com.deadrising.mod.blocks.props.CrateModel;
 import com.deadrising.mod.blocks.props.FloorProp;
 import com.deadrising.mod.blocks.props.LightProp;
+import com.deadrising.mod.blocks.props.MilitartLootCrate;
 import com.deadrising.mod.blocks.props.PinicTableBlock;
+import com.deadrising.mod.blocks.props.TableModel;
+import com.deadrising.mod.blocks.props.TraficBarrier;
 
 
 import net.minecraft.block.Block;
@@ -28,9 +33,10 @@ public class ModBlocks
 	
 	
 	
+	
+	
 	//Props
 	public static final Block FIREWOOD = new PropBase("firewood", Material.IRON, deadrising.TabBlocks); 
-	public static final Block BOX_CRATE = new PropBase("box_crate", Material.IRON, deadrising.TabBlocks);
 	public static final Block BOX = new PropBase("box", Material.IRON, deadrising.TabBlocks);
 	public static final Block BOX_GRAPES = new PropBase("box_grapes", Material.IRON, deadrising.TabBlocks);
 	public static final Block BOX_ORANGES = new PropBase("box_oranges", Material.IRON, deadrising.TabBlocks);
@@ -58,11 +64,20 @@ public class ModBlocks
 	public static final Block WARDROBE2 = new PropBase("wardrobe2", Material.IRON, deadrising.TabBlocks);
 	public static final Block BOOKSHELF = new PropBase("bookshelf", Material.IRON, deadrising.TabBlocks);
 	public static final Block BOOKSHELF2 = new PropBase("bookshelf2", Material.IRON, deadrising.TabBlocks);
-	public static final Block BARRICADE = new PropBase("barricade", Material.IRON, deadrising.TabBlocks);
-	public static final Block PICNICTABLE = new PinicTableBlock("picnictable", Material.IRON, deadrising.TabBlocks);
-	public static final Block TABLE = new PinicTableBlock("table", Material.IRON, deadrising.TabBlocks);
-	public static final Block CAMPPICNICTABLE = new PinicTableBlock("camppicnictable", Material.IRON, deadrising.TabBlocks);
-	public static final Block MILITARYSIGN = new PinicTableBlock("militarysign", Material.IRON, deadrising.TabBlocks);
+	public static final Block PICNICTABLE = new PinicTableBlock("picnictable", Material.WOOD, deadrising.TabBlocks);
+	public static final Block TABLE = new TableModel("table", Material.WOOD, deadrising.TabBlocks);
+	public static final Block CAMPPICNICTABLE = new PinicTableBlock("camppicnictable", Material.WOOD, deadrising.TabBlocks);
+	public static final Block TRAFICBARRIER = new TraficBarrier("trafficbarrier", Material.IRON, deadrising.TabBlocks);
+	public static final Block BARRIER = new ConcreteBarrier("concretebarrier", Material.IRON, deadrising.TabBlocks);
+	public static final Block MILITARYLOOTCRATE = new MilitartLootCrate("militarylootcrate", Material.IRON, deadrising.TabBlocks);
+	public static final Block TRAFFICSIGNAL = new PropBase("trafficsignal", Material.IRON, deadrising.TabBlocks);
+	public static final Block TRAINSIGNALOFF = new PropBase("trainsignal", Material.IRON, deadrising.TabBlocks);
+	public static final Block CONCRETEPOLE = new PropBase("concretepole", Material.IRON, deadrising.TabBlocks);
+	public static final Block AMMO_CRATE = new CrateModel("big_crate_ammo", Material.IRON, deadrising.TabBlocks);
+	public static final Block MINECART = new PropBase("minecart", Material.IRON, deadrising.TabBlocks);
+	public static final Block DEER = new PropBase("plaque_deer", Material.IRON, deadrising.TabBlocks);
+	public static final Block LIGHT_OFF = new PropBase("light_off", Material.IRON, deadrising.TabBlocks);
+	
 	
 	
 }

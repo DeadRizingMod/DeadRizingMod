@@ -33,17 +33,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiServerBrowser extends GuiDead {
 
-    public static String designatedServerIP = Reference.SERVERIP_BEAVER;
-    public static String devServerIP = Reference.SERVERIP_KANGAROO;
+    public static String designatedServerIP = Reference.SERVERIP_UNDEADISLAND;
+
     private ServerData data;
     
     public boolean isOnline;
     
-    public GuiServerBrowser(){
-        super();
-        setUiTitle(I18n.format("gui.title.mainmenu"));
-    }
-
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -51,20 +46,23 @@ public class GuiServerBrowser extends GuiDead {
 
         DeadRenderHelper.renderRectWithOutline(width / 2 - 75,3,150,34,0x22FFFFFF,0x22FFFFFF,1);
         
+        DeadRenderHelper.renderRectWithOutline(0,0,width,40,0x55000000,0x44000000,1);
+        DeadRenderHelper.renderRectWithOutline(0,height - 40,width,40,0x55000000,0x44000000,1);
+        
         DeadRenderHelper.renderCenteredTextWithShadow(I18n.format("gui.subtitle.status"),width / 2,5,0xFFFFFF);
         //Server Name
-        DeadRenderHelper.renderCenteredTextWithShadow(data.serverName ,width / 2 - 107, height - 195,0xFFFFFF);
+        DeadRenderHelper.renderCenteredTextWithShadow(data.serverName ,width / 2 - 103, height - 195,0xFFFFFF);
         //Server Ping
         if(!isOnline)
         {
-            DeadRenderHelper.renderTextWithShadow(TextFormatting.RED + "OFFLINE" ,width / 2 - 145, height - 185,0xFFFFFF);
+            DeadRenderHelper.renderTextWithShadow(TextFormatting.RED + "OFFLINE" ,width / 2 - 130, height - 185,0xFFFFFF);
         }
         else
         {
             DeadRenderHelper.renderTextWithShadow(TextFormatting.GREEN + "ONLINE" ,width / 2 - 130, height - 185,0xFFFFFF);
             //Player Count
         }
-        DeadRenderHelper.renderTextWithShadow(data.populationInfo ,width / 2 - 130, height - 175,0xFFFFFF);
+        DeadRenderHelper.renderText(data.populationInfo ,width / 2 - 130, height - 175,0xFFFFFF);
     }
     
     @Override
@@ -82,11 +80,15 @@ public class GuiServerBrowser extends GuiDead {
                 mc.displayGuiScreen(new GuiDeadMainMenu());
                 break;
             case BUTTON_JOINOFFSERV:
-            	mc.displayGuiScreen(new GuiDeadConnecting(this, mc, data));
-            	break;
+                designatedServerIP = Reference.SERVERIP_UNDEADISLAND;
+                mc.displayGuiScreen(new GuiDeadMainMenu());
+            case BUTTON_PLAY:
+                this.joinServer(designatedServerIP,false);
+                break;
             case 2:
             	mc.displayGuiScreen(new GuiServerBrowser());
             	break;
+            	
         }
 
     }
@@ -95,9 +97,10 @@ public class GuiServerBrowser extends GuiDead {
      * Initialize GUI - Initialize the GUI
      */
     public void initGui() {
-        this.buttonList.add(new GuiButtonDead(BUTTON_QUIT, 25, height - 40, 80, 15, "Back"));
-        this.buttonList.add(new GuiButtonDead(2, 150, height - 40, 80, 15, "Refresh"));
-        ServerData data = new ServerData("Undead Island", designatedServerIP, false);
+        this.buttonList.add(new GuiButtonDead(BUTTON_QUIT, 55, height - 60, 80, 15, "Back"));
+        this.buttonList.add(new GuiButtonDead(2, 150, height - 60, 80, 15, "Refresh"));
+        this.buttonList.add(new GuiButtonDead(BUTTON_PLAY, 243, height - 60, 80, 15, "Join Server"));
+        ServerData data = new ServerData("Adagio Isle", designatedServerIP, false);
         this.data = data;
         isOnline = true;
         ServerPinger ping = new ServerPinger();
@@ -107,6 +110,7 @@ public class GuiServerBrowser extends GuiDead {
 			isOnline = false;
 			//e.printStackTrace();
 		}
-        this.buttonList.add(new GuiButtonDead(BUTTON_JOINOFFSERV, width / 2 - 150, height - 200, 300, 50, ""));
+        this.buttonList.add(new GuiButtonDead(BUTTON_JOINOFFSERV, width / 2 - 140, height - 198, 250, 40, I18n.format(""))
+                .setAlwaysHighlighted(designatedServerIP.equalsIgnoreCase(Reference.SERVERIP_UNDEADISLAND)));
     }
 }

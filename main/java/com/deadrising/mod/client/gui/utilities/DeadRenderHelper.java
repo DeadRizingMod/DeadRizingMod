@@ -38,6 +38,15 @@ public class DeadRenderHelper
         mc.fontRenderer.drawStringWithShadow(text, (float)posX, (float)posY, color);
     }
     
+    public static void renderPlayer(int x, int y, float givenScale, float givenRotation){
+
+        GL11.glPushMatrix();
+
+        PLAYER_RENDERER.renderPlayerModel(x, y, givenScale, givenRotation);
+        GL11.glPopMatrix();
+
+    }
+    
     public static void renderCenteredText(final String text, final int posX, final int posY, final int color) {
         final Minecraft mc = Minecraft.getMinecraft();
         renderText(text, posX - mc.fontRenderer.getStringWidth(text) / 2, posY, color);
@@ -143,20 +152,6 @@ public class DeadRenderHelper
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
         GL11.glPopMatrix();
-    }
-    
-    /**
-     * Render Player - Render the Player Model
-     * @param x - X position of Render
-     * @param y - Y position of Render
-     */
-    public static void renderPlayer(int x, int y, float givenScale, float givenRotation){
-
-        GL11.glPushMatrix();
-
-        PLAYER_RENDERER.renderPlayerModel(x, y, givenScale, givenRotation);
-        GL11.glPopMatrix();
-
     }
     
     public static void renderRect(int givenPosX, int givenPosY, int givenWidth, int givenHeight, final int givenColor, final float givenAlpha) {
@@ -369,11 +364,6 @@ public class DeadRenderHelper
         GL11.glPopMatrix();
     }
     
-    public static void renderPlayer(final int x, final int y, final float givenScale, final float givenRotation, ItemStack helm, ItemStack chest, ItemStack legs, ItemStack boots, ItemStack held) {
-        GL11.glPushMatrix();
-        DeadRenderHelper.PLAYER_RENDERER.renderPlayerModel(x, y, givenScale, givenRotation);
-        GL11.glPopMatrix();
-    }
     
     static {
         DeadRenderHelper.swing = 0.0f;

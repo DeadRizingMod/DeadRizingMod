@@ -33,16 +33,11 @@ public class GuiDeadInGame extends GuiScreen
         GlStateManager.disableDepth();
         DeadRenderHelper.renderRectWithOutline(39, this.height - 178, 126, 150, 1426063360, 1140850688, 1);
         DeadRenderHelper.renderImage(20.0, this.height - 235, new ResourceLocation("deadrising", "textures/gui/logo.png"), 165.0, 43.5);
-        DeadRenderHelper.renderCenteredTextScaledWithShadow(TextFormatting.RED + "v1.2.2", 102, this.height - 200, 16777215, 1.0);
+        DeadRenderHelper.renderCenteredTextScaledWithShadow(TextFormatting.RED + "v1.2.8 - Alpha", 102, this.height - 200, 16777215, 1.0);
         EntityPlayer p = mc.player;
         
-        ItemStack HELMET = p.inventory.armorInventory.get(3);
-        ItemStack CHESTPLATE = p.inventory.armorInventory.get(2);
-        ItemStack LEGGINGS = p.inventory.armorInventory.get(1);
-        ItemStack BOOTS = p.inventory.armorInventory.get(0);
-        ItemStack lastMainItem = p.getHeldItemMainhand();
-        
-        DeadRenderHelper.renderPlayer(width / 2 +150,height / 2 + 155,150, -45, HELMET, CHESTPLATE, LEGGINGS, BOOTS, lastMainItem);
+        float val = (float)(Math.sin((DeadRenderHelper.swing / 55.0F)) * 70.0D);
+        DeadRenderHelper.renderPlayer(width / 2 +150,height / 2 + 155,150, val);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
     

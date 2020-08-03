@@ -31,7 +31,7 @@ public class GuiEvents {
 	@SubscribeEvent
 	public void onGuiLaunch(GuiOpenEvent event) {
 		if (event.getGui() instanceof GuiMainMenu) {
-			event.setGui(new GuiAnyKey());
+			event.setGui(new GuiDeadMainMenu());
 		}
 		
 		if(event.getGui() instanceof GuiIngameMenu)
@@ -41,7 +41,7 @@ public class GuiEvents {
 		
 		if(event.getGui() instanceof GuiConnecting)
 		{
-			event.setGui(new GuiDeadConnecting(new GuiDeadMainMenu(), Minecraft.getMinecraft(), new ServerData("Undead Island", Reference.SERVERIP_BEAVER, false)));
+			event.setGui(new GuiDeadConnecting(new GuiDeadMainMenu(), Minecraft.getMinecraft(), new ServerData("Undead Island", Reference.SERVERIP_UNDEADISLAND, false)));
 		}
 		
 	}

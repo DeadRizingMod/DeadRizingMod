@@ -1,10 +1,20 @@
-{
+
+    "vehicle.uaz": { "category": "master", "sounds": [{ "name": "deadrising:uaz", "stream": "true" }]},
+    "vehicle.idle": { "category": "master", "sounds": [{ "name": "deadrising:vehicle_idle", "stream": "true" }]},
+  "human.dea
     "entity.zombie.idle1":
     {
         "category": "entity",
         "subtitle": "Zombie Growl",
         "sounds": [{ "name": "deadrising:entity/drzombie/drzom_idle_1", "stream": false}]
     },
+	
+  "loading_sound": {
+    "category": "player",
+    "sounds": [
+      "deadrising:loading_sound"
+    ]
+  },
     
     "entity.zombie.idle2":
     {

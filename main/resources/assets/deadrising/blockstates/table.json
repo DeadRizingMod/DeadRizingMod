@@ -1,29 +1,10 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "deadrising:table"
-  },
-  "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": {
-      "model": "deadrising:table",
-      "transform": "forge:default-block"
-    },
-    "facing": {
-      "north": {
-        "y": 0
-      },
-      "south": {
-        "y": 180
-      },
-      "east": {
-        "y": 90
-      },
-      "west": {
-        "y": 270
-      }
+    "variants": {
+        "facing=up": {"model": "deadrising:table", "x": 180},
+        "facing=down": {"model": "deadrising:table", "x": 0},
+        "facing=north": {"model": "deadrising:table", "x": 90, "y": 180},
+        "facing=east": {"model": "deadrising:table", "x": 90, "y": 270},
+        "facing=south": {"model": "deadrising:table", "x": 90},
+        "facing=west": {"model": "deadrising:table", "x": 90, "y": 90}
     }
-  }
 }

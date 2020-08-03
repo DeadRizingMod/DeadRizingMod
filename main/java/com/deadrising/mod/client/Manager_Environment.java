@@ -30,7 +30,7 @@ public class Manager_Environment {
     } else {
       buffers = new ByteBuffer[] { loadInstance(image, 32) };
     } 
-    Display.setTitle("Minecraft - Deadrising v1.2.3");
+    Display.setTitle("Deadrising v1.2.9");
     Display.setIcon(buffers);
   }
   

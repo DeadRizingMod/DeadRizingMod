@@ -5,8 +5,12 @@ import java.util.List;
 
 import com.deadrising.mod.deadrising;
 import com.deadrising.mod.entity.EntityDRZombie;
+import com.deadrising.mod.network.PacketHandler;
+import com.deadrising.mod.network.message.PacketProne;
 import com.deadrising.mod.utils.handlers.ConfigHandler;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -25,6 +29,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent;
 

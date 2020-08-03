@@ -1,7 +1,9 @@
 ﻿itemGroup.tabmedical=DeadRizing - Medical
 itemGroup.tabmelee=DeadRizing - Melee Weapons
 itemGroup.tabfood=DeadRizing - Foods
+itemGroup.tabitems=DeadRizing - Items
 itemGroup.tabblocks=DeadRizing - Props
+itemGroup.tabitems=DeadRizing - Items
 itemGroup.modularwarfareTab=DeadRizing - Guns
 itemGroup.armorstab=DeadRizing - Armors
 
@@ -12,10 +14,21 @@ item.first_aid_kit.name=First Aid Kit
 item.bandage.name=Bandage
 item.bandaid.name=Band-Aid
 item.painkillers.name=Painkillers
+item.cure.name=Infection Cure
+item.emptycure.name=Empty Syringe
+
+
+#Throwables
+item.grenade.name=Grenade
+item.smoke.name=Smoke
+item.molotov.name=Molotov
+
+
+#Items
+item.gears.name=Gears
 
 
 #Entitys
-
 entity.zombie.name=DeadRizing Zombie
 entity.crawler.name=DeadRizing Zombie Crawler
 
@@ -34,27 +47,49 @@ tile.sandbag_block.name=Sand Bag
 tile.campfire.name=Campfire
 tile.cabnet.name=Cabnet
 tile.chair.name=Chair
-tile.floorprop.name=floorprop
-tile.floorprop2.name=floorprop2
+tile.floorprop.name=Oak path
+tile.floorprop2.name=Stone Path
+tile.floorprop3.name=Spruce Path
 tile.pallet.name=Pallet
-tile.ruble2.name=Ruble2
+tile.ruble2.name=Ruble 2
 tile.trash.name=Trash
+tile.trash2.name=Trash 2
 tile.box.name=Empty Box
 tile.box_peaches.name=Box of Peaches
 tile.box_plums.name=Box of Plums
-tile.box_grapes.name=Box of grapes
-tile.box_tangerines.name=Box of tangerines
+tile.box_grapes.name=Box of Grapes
+tile.box_tangerines.name=Box of Tangerines
+tile.box_oranges.name=Box of Oranges
 tile.crate.name=Crate
 tile.crate_open.name=Crate Open
 tile.military_crate.name=Military Crate
 tile.repairstation.name=Repairstaion
 tile.firepit.name=Fire Pit
 tile.blacksmith.name=Black Smith
+tile.weapons_locker.name=Weapons Locker
+tile.trafficbarrier.name=Traffic Barrier
+tile.table.name=Table
+tile.picnictable.name=Picnictable
+tile.militarylootcrate.name=Military Loot Crate
+tile.trafficsignal.name=Traffic Signal
+tile.plaque_deer.name=Deer Plaque
+tile.minecart.name=Minecart
+tile.big_crate_ammo.name=Ammo Crate
+tile.stackedpallet.name=Stacked Pallet
+tile.wardrobe.name=Wardrobe
+tile.wardrobe2.name=Wardrobe 2 
+tile.light.name=Light
+tile.light2.name=Light 2
+tile.camppicnictable.name=Camp Picnictable
+tile.concretepole.name=Concrete Pole
+tile.concretebarrier.name=Concrete Barrier
+
+
 
 
 
 #Food Items
-item.item_beans=Canned Beans
+item.item_beans.name=Canned Beans
 item.item_fish.name=Canned Fish
 item.item_fruit.name=Canned Fruit
 item.item_pasta.name=Canned Pasta
@@ -65,6 +100,8 @@ item.item_canned_spaghetti.name=Canned Spaghetti
 item.item_canned_sardines.name=Canned Sardines
 item.item_canned_tuna.name=Canned Tuna
 item.item_sardines.name=Canned Spag
+item.item_noodles.name=Canned Noodles
+item.item_human_meat.name=Human Meat
 
 
 #Menu/Gui Elements
@@ -72,13 +109,11 @@ gui.button.discord=DISCORD
 gui.button.website=WEBSITE
 gui.button.play=PLAY
 gui.button.singleplayer=SINGLEPLAYER
-gui.button.multiplayer=OFFICIAL SERVERS
+gui.button.community=COMMUNITY SERVERS
 gui.button.settings=SETTINGS
 gui.button.quit=QUIT
 gui.button.news=NEWS
-gui.button.stats=STATISTICS
-gui.button.kangaroo=COMMUNITY SERVERS
-gui.button.stats=PLAYER STATS
+gui.button.server=OFFICAL SERVERS
 
 #Menu Titles
 gui.title.mainmenu=Main Menu

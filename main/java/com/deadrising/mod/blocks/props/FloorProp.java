@@ -58,7 +58,10 @@ public class FloorProp extends Block implements IHasModel
 	
 	}
 
-	
+	  public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+	    {
+	        return FLOORPROP;
+	    }
 	
 	//Facing
 	@Override
@@ -94,26 +97,6 @@ public class FloorProp extends Block implements IHasModel
 	  return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
   }
 	
-	private boolean canBlockStay(World worldIn, BlockPos pos)
-	{
-		return worldIn.getBlockState(pos.down()).isSideSolid(worldIn, pos, EnumFacing.UP);
-	}
-	
-	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) 
-	{
-		return super.canPlaceBlockAt(worldIn, pos) ? this.canBlockStay(worldIn, pos) : false;
-	}
-	
-	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) 
-	{
-		if(!this.canBlockStay(worldIn, pos))
-		{
-			worldIn.setBlockToAir(pos);
-			InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.FLOORPROP));
-		}
-	}
 	
 	@Override
 	public BlockRenderLayer getBlockLayer() 

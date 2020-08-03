@@ -1,162 +1,104 @@
 package com.deadrising.mod.client.gui;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.multiplayer.GuiConnecting;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.common.util.FakePlayerFactory;
-import net.minecraftforge.fml.client.FMLClientHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.Color;
-
-import com.deadrising.mod.Reference;
-import com.deadrising.mod.client.gui.api.GuiButtonDead;
+import net.minecraft.client.gui.*;
+import net.minecraft.util.*;
+import net.minecraft.client.renderer.*;
+import org.lwjgl.opengl.*;
 import com.deadrising.mod.client.gui.api.GuiContainer;
 import com.deadrising.mod.client.gui.utilities.DeadRenderHelper;
 
+import java.util.*;
+import org.lwjgl.util.*;
+import org.lwjgl.util.Color;
+
 import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
+import java.io.*;
+import java.net.*;
+import net.minecraft.client.*;
+import net.minecraftforge.fml.client.*;
+import net.minecraft.client.multiplayer.*;
 
-public class GuiDead extends GuiScreen {
-
-    protected ArrayList<GuiContainer> guiContainers = new ArrayList();
-
-    public String uiTitle = "Unknown";
-
-    public static final ResourceLocation menuBackground = new ResourceLocation(Reference.MOD_ID,"textures/gui/menu/background" + (int) (Math.random() * ((5 - 1) + 1)) + ".png");
-
+public class GuiDead extends GuiScreen
+{
+    protected ArrayList<GuiContainer> guiContainers;
+    public static final ResourceLocation menuBackground;
     public final int BUTTON_LINK_DISCORD = 200;
     public final int BUTTON_LINK_WEBSITE = 201;
-
-    public final int BUTTON_BEAVER = 202;
-    public final int BUTTON_KANGAROO = 203;
-
     public final int BUTTON_PLAY = 204;
-
     public final int BUTTON_NEWS = 205;
-
     public final int BUTTON_SETTINGS = 206;
-
     public final int BUTTON_SINGLEPLAYER = 207;
-    public final int BUTTON_MULTIPLAYER = 208;
-
+    public final int BUTTON_MULTIPLAYER = 210;
     public final int BUTTON_QUIT = 209;
+    public final int BUTTON_JOINOFFSERV = 208;
     
-    public final int BUTTON_JOINOFFSERV = 210;
-    public final int BUTTON_JOINDEVSERV = 211;
-
-    @Override
-    public void updateScreen()
-    {
-        super.updateScreen();
-        for(GuiButton button : this.buttonList){
-            if(button instanceof GuiButtonDead){
-                ((GuiButtonDead)button).updateButton();
-            }
-        }
+    public GuiDead() {
+        this.guiContainers = new ArrayList<GuiContainer>();
     }
-
-
-    @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks){
-
-        GL11.glPushMatrix();
-
-        DeadRenderHelper.renderImageCentered(width / 2,0,menuBackground,width,height);
-
-        DeadRenderHelper.renderRectWithOutline(0,0,width,40,0x55000000,0x44000000,1);
-        DeadRenderHelper.renderRectWithOutline(0,height - 40,width,40,0x55000000,0x44000000,1);
-        DeadRenderHelper.renderImage(4,3,new ResourceLocation(Reference.MOD_ID,"textures/gui/logo.png"),110,29);
-        //DeadRenderHelper.renderImage(100,5,new ResourceLocation(Reference.MOD_ID,"textures/gui/exit.png"),410,30.9);
-                
-
-        DeadRenderHelper.renderCenteredTextScaled(TextFormatting.RED + "DeadRizing v1.2.3" ,58,34,0xFFFFFF,0.5);
-
-        GL11.glPopMatrix();
-
-        super.drawScreen(mouseX,mouseY,partialTicks);
+    
+    public void drawScreen(final int mouseX, final int mouseY, final float partialTicks) {
+        GlStateManager.color(1.0f, 1.0f, 1.0f);
+        GL11.glColor3f(1.0f, 1.0f, 1.0f);
+        DeadRenderHelper.renderImageCentered(this.width / 2, 0.0, GuiDead.menuBackground, this.width, this.height);
+        GlStateManager.color(1.0f, 1.0f, 1.0f);
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
-
-
-    public void setUiTitle(String givenTitle){
-        this.uiTitle = givenTitle;
-    }
-
-
-    public String getUiTitle(){
-        return this.uiTitle;
-    }
-
-
-    public void addContainer(GuiContainer container) {
+    
+    public void addContainer(final GuiContainer container) {
         container.initGui();
-        guiContainers.add(container);
+        this.guiContainers.add(container);
     }
-
-
+    
     public void updateContainers() {
-        for (GuiContainer gui : guiContainers) {
+        for (final GuiContainer gui : this.guiContainers) {
             gui.updateScreen();
         }
     }
-
-
-    public GuiContainer getContainer(int containerID) {
-        for (GuiContainer cont : guiContainers) {
+    
+    public GuiContainer getContainer(final int containerID) {
+        for (final GuiContainer cont : this.guiContainers) {
             if (cont.containerID == containerID) {
                 return cont;
             }
         }
         return null;
     }
-
-    private static final String pad(String s) {
-        return (s.length() == 1) ? "0" + s : s;
+    
+    private static final String pad(final String s) {
+        return (s.length() == 1) ? ("0" + s) : s;
     }
-
-    public int toHex(Color color) {
-        String alpha = pad(Integer.toHexString(color.getAlpha()));
-        String red = pad(Integer.toHexString(color.getRed()));
-        String green = pad(Integer.toHexString(color.getGreen()));
-        String blue = pad(Integer.toHexString(color.getBlue()));
-        String hex = "0x" + alpha + red + green + blue;
+    
+    public int toHex(final Color color) {
+        final String alpha = pad(Integer.toHexString(color.getAlpha()));
+        final String red = pad(Integer.toHexString(color.getRed()));
+        final String green = pad(Integer.toHexString(color.getGreen()));
+        final String blue = pad(Integer.toHexString(color.getBlue()));
+        final String hex = "0x" + alpha + red + green + blue;
         return Integer.parseInt(hex, 16);
     }
-
-
-    public void openURL(String givenURL){
+    
+    public void openURL(final String givenURL) {
         if (Desktop.isDesktopSupported()) {
             try {
                 Desktop.getDesktop().browse(new URI(givenURL));
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 e.printStackTrace();
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
+            }
+            catch (URISyntaxException e2) {
+                e2.printStackTrace();
             }
         }
     }
-
-
-    public void joinServer(String givenIP, boolean isLan){
-
+    
+    public void joinServer(final String givenIP, final boolean isLan) {
         if (!(Minecraft.getMinecraft().currentScreen instanceof GuiConnecting)) {
             FMLClientHandler.instance().setupServerList();
             FMLClientHandler.instance().connectToServer(Minecraft.getMinecraft().currentScreen, new ServerData("Server", givenIP, isLan));
         }
-
+    }
+    
+    static {
+        menuBackground = new ResourceLocation("deadrising", "textures/gui/menu/background" + (int)(Math.random() * 4.0) + ".png");
     }
 }

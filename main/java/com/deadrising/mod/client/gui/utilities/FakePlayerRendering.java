@@ -8,6 +8,8 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
@@ -17,10 +19,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import static net.minecraft.client.Minecraft.getMinecraft;
 import static net.minecraft.client.renderer.GlStateManager.*;
 
-/**
- * @author diesieben07
- * @author TechnicianLP
- */
+
 public class FakePlayerRendering {
 
     private final Renderer normalArms;
@@ -77,6 +76,8 @@ public class FakePlayerRendering {
         popMatrix();
 
     }
+
+
 
     public void renderPlayerModel(int posX, int posY, float scale, float rotation) {
         Minecraft mc = getMinecraft();

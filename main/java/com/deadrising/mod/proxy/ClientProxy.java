@@ -4,11 +4,22 @@ package com.deadrising.mod.proxy;
 import com.deadrising.mod.Reference;
 import com.deadrising.mod.deadrising;
 import com.deadrising.mod.client.GuiEvents;
+import com.deadrising.mod.client.KeyBinds;
 import com.deadrising.mod.client.Manager_Environment;
 import com.deadrising.mod.client.gui.GuiAirdrop;
 import com.deadrising.mod.client.particle.ParticleRenderer;
+import com.deadrising.mod.client.render.throwable.RenderThrowable;
 import com.deadrising.mod.common.EnumParticles;
+import com.deadrising.mod.entity.EntityLootableBody;
+import com.deadrising.mod.entity.throwables.EntityFragGrenade;
+import com.deadrising.mod.entity.throwables.EntityMolotov;
+import com.deadrising.mod.entity.throwables.EntitySmokeGrenade;
+import com.deadrising.mod.graphics.CorpseRenderer;
 import com.deadrising.mod.init.ModBlocks;
+import com.deadrising.mod.init.ModItems;
+import com.deadrising.mod.utils.DiscordHandler;
+import com.deadrising.mod.utils.handlers.RenderHandler;
+import com.deadrising.mod.utils.handlers.SoundHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -35,16 +46,29 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 		/* Register Gui Events */
+		registerEntityRenderers();
 		MinecraftForge.EVENT_BUS.register(new GuiEvents());
+		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 	    Manager_Environment.setIcon();
-
+	    DiscordHandler.getInstance().setup();
+	    
+		RenderingRegistry.registerEntityRenderingHandler(EntityLootableBody.class, new IRenderFactory<EntityLootableBody>() {
+			@Override
+			public Render<? super EntityLootableBody> createRenderFor(RenderManager rm) {
+				return (new CorpseRenderer(rm));
+			}
+		});
 
 	}
+	
+	  private static void registerEntityRenderers() {
+		    RenderingRegistry.registerEntityRenderingHandler(EntityFragGrenade.class, manager -> new RenderThrowable(manager, ModItems.GRENADE));
+		    RenderingRegistry.registerEntityRenderingHandler(EntitySmokeGrenade.class, manager -> new RenderThrowable(manager, ModItems.SMOKE));
+		    RenderingRegistry.registerEntityRenderingHandler(EntityMolotov.class, manager -> new RenderThrowable(manager, ModItems.MOLOTOV));
+		   
+		  }
 
-	private void registerEntityRenderers() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	public void registerItemRender(Item item, int meta, String id) 
 	{
@@ -60,11 +84,12 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
-		// RenderPlayerPlush
+		KeyBinds.registerKeybinding();
 
 
 		// Particles, etc...
 		MinecraftForge.EVENT_BUS.register(ParticleRenderer.getInstance());
+       
 	}
 
 	@Override

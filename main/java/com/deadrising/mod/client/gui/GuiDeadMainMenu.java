@@ -19,28 +19,36 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiDeadMainMenu extends GuiDead {
+import net.minecraft.util.*;
+import net.minecraft.client.renderer.*;
+import org.lwjgl.opengl.*;
+import net.minecraft.client.gui.*;
+import java.io.*;
+import net.minecraft.client.resources.*;
 
-    public static String designatedServerIP = Reference.SERVERIP_BEAVER;
-
+public class GuiDeadMainMenu extends GuiDead
+{
+    public String designatedServerIP;
+    private static float introFade;
+    private static float introFadeFirst;
+    private static boolean hasSeenIntro;
     private GuiButton single, multi, community;
     
     private boolean playClicked;
+    public static final ResourceLocation MENU_LOGO;
     
-    public GuiDeadMainMenu(){
-        super();
-        setUiTitle(I18n.format("gui.title.mainmenu"));
+    public static boolean hasSeenIntro() {
+        return GuiDeadMainMenu.hasSeenIntro;
     }
-
-
+    
+    
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        super.drawScreen(mouseX,mouseY,partialTicks);
-
-        DeadRenderHelper.renderRectWithOutline(width / 2 - 75,3,150,34,0x22FFFFFF,0x22FFFFFF,1);
-
-        DeadRenderHelper.renderCenteredTextWithShadow(I18n.format("gui.subtitle.status"),width / 2,5,0xFFFFFF);
-
+    public void drawScreen(final int mouseX, final int mouseY, final float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        GlStateManager.color(1.0f, 1.0f, 1.0f);
+        GL11.glColor3f(1.0f, 1.0f, 1.0f);
+        this.drawIntro();
+        
         if(playClicked)
         {
         	single.visible = true;
@@ -53,136 +61,98 @@ public class GuiDeadMainMenu extends GuiDead {
         	multi.visible = false;
         	community.visible = false;
         }
-        
-        GlStateManager.pushMatrix();
-
-        ScissorState.scissor(30, 0, width, height, true);
-
-        float val = (float) (Math.sin(DeadRenderHelper.swing / 55) * 70);
-        
-        ItemStack head = ConfigHandler.ClientSide.HELMET;
-        ItemStack chest = ConfigHandler.ClientSide.CHESTPLATE;
-        ItemStack legs = ConfigHandler.ClientSide.LEGGINGS;
-        ItemStack boots = ConfigHandler.ClientSide.BOOTS;
-        ItemStack hand = ConfigHandler.ClientSide.lastMainItem;
-        
-        if(hand == null)
-        {
-        	hand = ItemStack.EMPTY;
-        }
-        else
-        {
-        	if(head == null)
-        	{
-        		head = ItemStack.EMPTY;
-        	}
-        	else
-        	{
-        		if(chest == null)
-        		{
-        			chest = ItemStack.EMPTY;
-        		}
-        		else
-        		{
-        			if(legs == null)
-        			{
-        				legs = ItemStack.EMPTY;
-        			}
-        			else
-        			{
-        				if(boots == null)
-        				{
-        					boots = ItemStack.EMPTY;
-        				}
-        				else
-        				{
-        			        DeadRenderHelper.renderPlayer(width / 2 +150,height / 2 + 155,150, -45, head, chest, legs, boots, hand);
-        				}
-        			}
-        		}
-        	}
-        }
-        
-
-        ScissorState.endScissor();
-
-        GlStateManager.popMatrix();
     }
 
-    @Override
-    protected void actionPerformed(GuiButton button) throws IOException
-    {
+    
+    
+    public void drawIntro() {
+    	
+    	DeadRenderHelper.renderRectWithOutline(52, this.height - 157, 100, 150, 1426063360, 1140850688, 1);
+        DeadRenderHelper.renderImage(20.0, this.height - 235, new ResourceLocation("deadrising", "textures/gui/logo.png"), 165.0, 43.5);
+        DeadRenderHelper.renderCenteredTextScaledWithShadow("v1.34.1", 102, this.height - 20, 16777215, 1.0);
+        if (GuiDeadMainMenu.introFadeFirst <= 0.0f) {
+            if (GuiDeadMainMenu.introFade > 0.0f) {
+                GuiDeadMainMenu.introFade -= 0.02f;
+                GuiDeadMainMenu.hasSeenIntro = false;
+            }
+            else {
+                GuiDeadMainMenu.hasSeenIntro = true;
+            }
+        }
+        else {
+            GuiDeadMainMenu.hasSeenIntro = false;
+        }
+        if (GuiDeadMainMenu.introFadeFirst > 0.0f) {
+            GuiDeadMainMenu.introFadeFirst -= 0.025f;
+        }
+        if (!GuiDeadMainMenu.hasSeenIntro) {
+            DeadRenderHelper.renderRect(0, 0, this.width, this.height, 2565927, GuiDeadMainMenu.introFade);
+            DeadRenderHelper.renderImageCenteredTransparent(this.width / 2, this.height / 2, GuiDeadMainMenu.MENU_LOGO, 296.0, 80.0, GuiDeadMainMenu.introFade);
+            DeadRenderHelper.renderRect(0, 0, this.width, this.height, 2565927, GuiDeadMainMenu.introFadeFirst);
+            
+        }
+    }
+    
+    protected void actionPerformed(final GuiButton button) throws IOException {
         super.actionPerformed(button);
-        
-        switch(button.id){
-            case BUTTON_LINK_DISCORD:
-                this.openURL(Reference.LINK_DISCORD);
+        switch (button.id) {
+            case 200: {
+                this.openURL("https://discord.gg/gmcMRRk");
                 break;
-            case BUTTON_LINK_WEBSITE:
-                this.openURL(Reference.LINK_WEBSITE);
+            }
+            case 201: {
+                this.openURL("https://www.cubgmc.net/");
                 break;
-            case BUTTON_BEAVER:
-                designatedServerIP = Reference.SERVERIP_BEAVER;
-                mc.displayGuiScreen(new GuiDeadMainMenu());
+            }
+            case 207: {
+                this.mc.displayGuiScreen((GuiScreen)new GuiWorldSelection((GuiScreen)this));
                 break;
-            case BUTTON_KANGAROO:
-                designatedServerIP = Reference.SERVERIP_KANGAROO;
-                mc.displayGuiScreen(new GuiDeadMainMenu());
+            }
+            case 208: {
+                this.mc.displayGuiScreen((GuiScreen)new GuiMultiplayer((GuiScreen)this));
+            }
+            case 206: {
+                this.mc.displayGuiScreen((GuiScreen)new GuiOptions((GuiScreen)this, this.mc.gameSettings));
                 break;
-            case BUTTON_SINGLEPLAYER:
-                mc.displayGuiScreen(new GuiWorldSelection(this));
+            }
+            case 209: {
+                this.mc.shutdown();
                 break;
-            case BUTTON_MULTIPLAYER:
-                mc.displayGuiScreen(new GuiServerBrowser());
+            }
+            case 210: {
+            	mc.displayGuiScreen(new GuiServerBrowser());
                 break;
-            case BUTTON_NEWS:
-
-                break;
-            case BUTTON_SETTINGS:
-                mc.displayGuiScreen(new GuiOptions(this,mc.gameSettings));
-                break;
-            case BUTTON_QUIT:
-                mc.shutdown();
-                break;
-            case BUTTON_PLAY:
+            }
+            case 204: {
             	this.playClicked = !this.playClicked;
                 break;
+            }
         }
-
     }
-
-    /**
-     * Initialize GUI - Initialize the GUI
-     */
+    
     public void initGui() {
-
-        this.buttonList.add(new GuiButtonDead(BUTTON_LINK_DISCORD,this.width - 83,3,80,15,I18n.format("gui.button.discord")));
-        this.buttonList.add(new GuiButtonDead(BUTTON_LINK_WEBSITE,this.width - 83,22,80,15,I18n.format("gui.button.website"))
-				.setDisabled(true));
-
-        //this.buttonList.add(new GuiButtonDead(BUTTON_NEWS,this.width - 83,height - 18,80,15,I18n.format("gui.button.news"))
-				//.setDisabled(true));
-
-        this.buttonList.add(new GuiButtonDead(BUTTON_NEWS, 25, height - 60, 80, 15, I18n.format("gui.button.news")));
-        this.buttonList.add(new GuiButtonDead(BUTTON_SETTINGS,25,height - 40,80,15,I18n.format("gui.button.settings")));
-        this.buttonList.add(new GuiButtonDead(BUTTON_QUIT, 25, height - 20, 80, 15, I18n.format("gui.button.quit")));
-        this.buttonList.add(new GuiButtonDead(BUTTON_PLAY,5,this.height - 120,120,30,I18n.format("gui.button.play"))
-                .setScale(2)
-                .setYOffset(-3)
-                .setImage(new ResourceLocation(Reference.MOD_ID,"textures/gui/menu/play.png")));
-            
-            this.multi = new GuiButtonDead(BUTTON_MULTIPLAYER,130,height - 125,120,15,I18n.format("gui.button.multiplayer"));
-            this.community = new GuiButtonDead(BUTTON_KANGAROO,130,height - 105,120,15,I18n.format("gui.button.kangaroo")).setDisabled(true);
-            this.single = new GuiButtonDead(BUTTON_SINGLEPLAYER, 130, height - 85,120,15,I18n.format("gui.button.singleplayer"));
+        this.designatedServerIP = "server.cubgmc.net";
+        this.buttonList.add(new GuiButtonDead(204, 42, this.height - 187, 120, 30, I18n.format("gui.button.play", new Object[0])).setScale(2.0).setYOffset(-3).setImage(new ResourceLocation("deadrising", "textures/gui/menu/play.png")));
+            this.buttonList.add(new GuiButtonDead(200, 62, this.height - 130, 80, 15, I18n.format("gui.button.discord", new Object[0])));
+            this.buttonList.add(new GuiButtonDead(201, 62, this.height - 110, 80, 15, I18n.format("gui.button.website", new Object[0])));
+            this.buttonList.add(new GuiButtonDead(206, 62, this.height - 90, 80, 15, I18n.format("gui.button.settings", new Object[0])));
+            this.buttonList.add(new GuiButtonDead(209, 62, this.height - 70, 80, 15, I18n.format("gui.button.quit", new Object[0])));
+            this.multi = new GuiButtonDead(BUTTON_MULTIPLAYER,155,height - 155,120,15,I18n.format("gui.button.server"));
+            this.community = new GuiButtonDead(BUTTON_JOINOFFSERV,155,height - 135,120,15,I18n.format("gui.button.community")).setDisabled(true);
+            this.single = new GuiButtonDead(BUTTON_SINGLEPLAYER, 155, height - 115,120,15,I18n.format("gui.button.singleplayer"));
             
             this.buttonList.add(multi);
             this.buttonList.add(community);
             this.buttonList.add(single);
-            
-            //Official
-            //Community
-            //Singleplayer
-            
-        
+    }
+    
+    protected void keyTyped(final char typedChar, final int keyCode) throws IOException {
+    }
+    
+    static {
+        MENU_LOGO = new ResourceLocation("deadrising", "textures/gui/logo.png");
+        GuiDeadMainMenu.introFade = 2.0f;
+        GuiDeadMainMenu.introFadeFirst = 1.0f;
+        GuiDeadMainMenu.hasSeenIntro = false;
     }
 }

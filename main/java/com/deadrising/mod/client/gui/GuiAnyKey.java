@@ -76,4 +76,5 @@ public class GuiAnyKey extends GuiScreen
         final Minecraft mc = Minecraft.getMinecraft();
         renderText(text, posX - mc.fontRenderer.getStringWidth(text) / 2, posY, color);
     }
+    
 }

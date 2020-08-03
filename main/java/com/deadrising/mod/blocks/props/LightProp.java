@@ -33,6 +33,11 @@ import net.minecraft.world.World;
 public class LightProp extends Block implements IHasModel {
 	
 	
+	
+	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	{
+	    this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH)); 
+	}
 
 public LightProp(String name, Material material, CreativeTabs tab)
 {
@@ -55,6 +60,41 @@ public void registerModels()
 
 }
 
+
+
+//Facing
+@Override
+public IBlockState getStateFromMeta(int meta) 
+{
+	EnumFacing facing = EnumFacing.getFront(meta);
+
+	if(facing.getAxis()==EnumFacing.Axis.Y) 
+	{
+		facing=EnumFacing.NORTH;
+	}
+	return getDefaultState().withProperty(FACING, facing);
+}
+
+//Facing
+@Override
+public int getMetaFromState(IBlockState state) 
+{
+	return ((EnumFacing) state.getValue(FACING)).getIndex();
+}
+    
+//Facing
+@Override
+protected BlockStateContainer createBlockState() 
+{
+	return new BlockStateContainer(this, new IProperty[]{FACING});
+}
+
+//Facing
+@Override
+public IBlockState getStateForPlacement(World worldIn, BlockPos pos,EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) 
+{
+  return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+}
 
 @Override
 public BlockRenderLayer getBlockLayer() 

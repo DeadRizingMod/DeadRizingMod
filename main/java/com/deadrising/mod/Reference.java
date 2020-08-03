@@ -19,12 +19,12 @@ public class Reference
     public static final String LINK_WEBSITE = "http://thedeadrizing.com/";
     public static final String LINK_DISCORD = "https://discord.gg/JXgyqjV";
 
-    public static final String SERVERIP_BEAVER = "192.99.194.146:25565";
-    public static final String SERVERIP_KANGAROO = "184.154.29.14:25585";
+    public static final String SERVERIP_UNDEADISLAND= "51.79.0.176:25749";
+
     
     public static final int AirdropGUIID = 500;
     
     public static final int ZombieNormalID = 200;
     public static final int CrawlerID = 201;
-
+    public static final int ZombieRunner = 202;
 }

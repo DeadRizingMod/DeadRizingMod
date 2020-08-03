@@ -158,10 +158,10 @@ public class GuiDeadConnecting extends GuiScreen
         switch(Tip)
         {
 	        case 0:
-	        	this.tip = "Tip #1";
+	        	this.tip = "Tip: Loot and find weapons to survive";
 	        	break;
 	        case 1:
-	        	this.tip = "Tip #2";
+	        	this.tip = "Tip: Stay away from runners they are fast and deadly";
 	        	break;
 	        case 2:
 	        	this.tip = "Tip #3";
@@ -212,7 +212,7 @@ public class GuiDeadConnecting extends GuiScreen
 
         DeadRenderHelper.renderImageCentered(width / 2,0,menuBackground,width,height);
     	
-        DeadRenderHelper.renderRectWithOutline(width / 2 - 75,3,150,34,0x22FFFFFF,0x22FFFFFF,1);
+        //DeadRenderHelper.renderRectWithOutline(width / 2 - 75,3,150,34,0x22FFFFFF,0x22FFFFFF,1);
         DeadRenderHelper.renderCenteredTextWithShadow(TextFormatting.YELLOW + this.tip,width / 2, this.height / 2 - 50,0xFFFFFF);
 
         if (this.networkManager == null)
